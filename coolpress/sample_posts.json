@@ -23,16 +23,24 @@
     "model": "press.category",
     "pk": 1,
     "fields": {
-        "label": "Hello",
-        "slug": "bye"
+        "label": "Science",
+        "slug": "Innovation"
     }
 },
 {
     "model": "press.category",
     "pk": 2,
     "fields": {
-        "label": "bye",
-        "slug": ""
+        "label": "Art",
+        "slug": "Culture"
+    }
+},
+{
+    "model": "press.category",
+    "pk": 3,
+    "fields": {
+        "label": "Port",
+        "slug": "competition"
     }
 },
 {
@@ -63,10 +71,61 @@
         "source_link": null,
         "source_label": null,
         "status": "PostStatus.DRAFT",
-        "author": 2,
+        "author": 1,
         "category": 1,
-        "creation_date": "2021-10-20T14:39:16.650Z",
-        "last_update": "2021-10-20T14:39:16.650Z"
+        "creation_date": "2021-10-20T14:36:52.768Z",
+        "last_update": "2021-10-20T14:36:52.769Z"
+    }
+},
+{
+    "model": "press.post",
+    "pk": 3,
+    "fields": {
+        "title": "",
+        "body": "",
+        "image_link": null,
+        "word_cloud_link": null,
+        "source_link": null,
+        "source_label": null,
+        "status": "PostStatus.DRAFT",
+        "author": 1,
+        "category": 1,
+        "creation_date": "2021-10-20T14:36:52.768Z",
+        "last_update": "2021-10-20T14:36:52.769Z"
+    }
+},
+{
+    "model": "press.post",
+    "pk": 4,
+    "fields": {
+        "title": "",
+        "body": "",
+        "image_link": null,
+        "word_cloud_link": null,
+        "source_link": null,
+        "source_label": null,
+        "status": "PostStatus.DRAFT",
+        "author": 1,
+        "category": 1,
+        "creation_date": "2021-10-20T14:36:52.768Z",
+        "last_update": "2021-10-20T14:36:52.769Z"
+    }
+},
+{
+    "model": "press.post",
+    "pk": 5,
+    "fields": {
+        "title": "",
+        "body": "",
+        "image_link": null,
+        "word_cloud_link": null,
+        "source_link": null,
+        "source_label": null,
+        "status": "PostStatus.DRAFT",
+        "author": 1,
+        "category": 1,
+        "creation_date": "2021-10-20T14:36:52.768Z",
+        "last_update": "2021-10-20T14:36:52.769Z"
     }
 },
 {
