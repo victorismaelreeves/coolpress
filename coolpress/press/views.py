@@ -1,29 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-# Create your views here.
-from press.models import Post, PostStatus
-
-
-def index(request):
-    return HttpResponse('Hi this is my first app')
-
-
-def get_html_from_post(post):
-    return f'''
-    <html>
-    <body>
-    <h1>The asked post id {post.id}</h1> 
-    <ul>
-    <li>{post.title}</li>
-    <li>{post.body}</li>
-    <li>{post.category.label}</li>
-    <li>{post.last_update}</li>
-    </ul>
-    <p>{post.author.user.username}</p>
-    </body>
-    </html>
-    '''
+from django.views.generic import DetailView, ListView
+from press.models import Post, PostStatus, Category, CoolUser
 
 
 def post_detail(request, post_id):
@@ -32,5 +10,38 @@ def post_detail(request, post_id):
 
 
 def post_list(request):
-    post_list = Post.objects.filter(status=PostStatus.PUBLISHED.value).order_by('-pk')[:20]
-    return render(request, 'posts_list.html', {'post_list': post_list})
+    posts_list = Post.objects.filter(status=PostStatus.PUBLISHED.value).order_by('-pk')[:20]
+    return render(request, 'posts_list.html', {'post_list': posts_list})
+
+
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    return render(request, 'categories_detail.html', {'category_obj': category})
+
+
+def category_list(request):
+    categories_list = Category.objects.order_by('-pk')[:20]
+    return render(request, 'categories_list.html', {'category_list': categories_list})
+
+
+class CategoryDetail(DetailView):
+    model = Category
+
+
+class CategoryList(ListView):
+    model = Category
+
+
+class PostListView(ListView):
+    model = Post
+    paginate_by = 5
+    context_object_name = 'post_list'
+    template_name = 'posts_list.html'
+
+
+class PostListByCoolUser(PostListView):
+    def get_queryset(self):
+        queryset = super(PostListByCoolUser, self).get_queryset()
+        cool_user_id = self.kwargs['cool_user_id']
+        cool_user = get_object_or_404(CoolUser, id=cool_user_id)
+        return queryset.filter(author=cool_user)
